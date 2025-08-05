@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="h-screen flex justify-center items-center">
+        <div class="card hover:bg-black px-24 text-black py-12 hover:text-white" id="titleBackground">
+            <h1 class="text-center text-xl transition-colors duration-500" id="title">Page not found!</h1>
+        </div>
+    </main>
+
+    <script>
+        const title = document.getElementById("title");
+        const titleBackground = document.getElementById("titleBackground");
+        let hoverTime1 = null;
+        let hoverTime2 = null;
+        let hoverTime3 = null;
+
+        titleBackground.addEventListener("mouseenter", () => {
+
+            hoverTime1 = setTimeout(() => {
+                title.textContent = "Page not found! (2)";
+            },0);
+
+            hoverTime2 = setTimeout(() => {
+                title.textContent = "Page not found! (1)";
+            },1000);
+
+            hoverTime3 = setTimeout(() => {
+                title.innerHTML = `<h1 class="text-center text-xl transition-colors duration-500" id="title"><a href="/">Back Home!</h1>`;
+            }, 2000); // รอ 2 วินาที
+        });
+
+        titleBackground.addEventListener("mouseleave", () => {
+            // ถ้าออกก่อน 2 วิ ให้ยกเลิก timer
+            clearTimeout(hoverTime1);
+            clearTimeout(hoverTime2);
+            clearTimeout(hoverTime3);
+            hoverTimer = null;
+            title.textContent = "Page not found!";
+        });
+
+    </script>
+</body>
+
+</html>

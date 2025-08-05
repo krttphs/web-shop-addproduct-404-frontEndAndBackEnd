@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+        .labelID {
+            position: absolute;
+            background-color: white;
+            top: 38.6%;
+            left: 45.5%;
+            font-size: 14px;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus+.labelID {
+            transform: translateY(-25px) translateX(-12px);
+        }
+
+        input:not(:placeholder-shown)+.labelID {
+            transform: translateY(-25px) translateX(-12px);
+            color: black;
+        }
+
+        .labelName {
+            position: absolute;
+            background-color: white;
+            top: 45.6%;
+            left: 45.5%;
+            font-size: 14px;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus+.labelName {
+            transform: translateY(-25px) translateX(-12px);
+        }
+
+        input:not(:placeholder-shown)+.labelName {
+            transform: translateY(-25px) translateX(-12px);
+            color: black;
+        }
+
+        .labelQTY {
+            position: absolute;
+            background-color: white;
+            top: 52.7%;
+            left: 45.5%;
+            font-size: 14px;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus+.labelQTY {
+            transform: translateY(-25px) translateX(-12px);
+        }
+
+        input:not(:placeholder-shown)+.labelQTY {
+            transform: translateY(-25px) translateX(-12px);
+            color: black;
+        }
+
+        .labelPrice {
+            position: absolute;
+            background-color: white;
+            top: 59.8%;
+            left: 45.5%;
+            font-size: 14px;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus+.labelPrice {
+            transform: translateY(-25px) translateX(-12px);
+        }
+
+        input:not(:placeholder-shown)+.labelPrice {
+            transform: translateY(-25px) translateX(-12px);
+            color: black;
+        }
+
+
+
+    </style>
+</head>
+
+<body class="flex justify-center items-center h-screen bg-gray-700">
+    <form action="/" method="POST" class="flex flex-col bg-white p-5 rounded-xl shadow-lg" id="addProductForm">
+
+        <label class="text-xl font-bold text-center m-2">Adding a product</label>
+
+        <input type="text" name="productID" id="productID" placeholder=" "
+            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
+        <label class="labelID p-1 font-bold rounded-full" for="productID">Product ID</label>
+
+        <input type="text" name="productName" id="productName" placeholder=" "
+            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
+        <label class="labelName p-1 font-bold rounded-full" for="productName">Name</label>
+
+        <input type="number" name="productQTY" id="productQTY" placeholder=" "
+            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
+        <label class="labelQTY p-1 font-bold rounded-full" for="productQTY">Quantity</label>
+
+        <input type="number" name="productPrice" id="productPrice" placeholder=" "
+            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
+        <label class="labelPrice p-1 font-bold rounded-full" for="productPrice">Price</label>
+
+        <button type="button" class="bg-blue-200 w-40 rounded text-center mx-auto hover:bg-blue-300 mt-2 font-semibold" id="submitButton">Add a Product</button>
+    </form>
+
+    <a href="/" class="text-center absolute bottom-40 bg-white p-2 rounded-xl w-20 font-bold hover:bg-black hover:text-white transition duration-300">Home</button>
+
+    <script>
+            let confirmed = false;
+
+            document.getElementById("submitButton").addEventListener("click",function (){
+                const button = this;
+                const form = document.getElementById("addProductForm");
+
+                if(!confirmed){
+                    button.textContent = "Are you sure?";
+                    confirmed = true;
+
+                    setTimeout(()=>{
+                        button.textContent = "Add a Product";
+                        confirmed = false;
+                    },3000);
+                } else{
+                    form.submit();
+                }
+            });
+    </script>
+</body>
+
+</html>

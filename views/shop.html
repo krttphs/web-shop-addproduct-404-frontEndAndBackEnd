@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Shopee</title>
+</head>
+
+<body>
+    <main class="m-10 flex items-center justify-center">
+        <div class="bg-gray-200 p-3 rounded-xl text-center">
+            <h1 class="text-xl font-bold">My Products</h1>
+            <p>List of all products...</p>
+            <table class="bg-white rounded-xl m-10">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="addProduct">
+                    <!-- add products here -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+
+    <script src="../routes/shop.js"></script>
+</body>
+
+</html>
