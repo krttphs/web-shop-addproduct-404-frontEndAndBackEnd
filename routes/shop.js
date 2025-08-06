@@ -9,7 +9,7 @@ const router = express.Router();
 //     res.sendFile(path.join(__dirname, '../','views','404.html'));
 // });
 
-router.get('/', (req, res, next) => {
+router.get('/shop', (req, res, next) => {
   res.sendFile('shop.html', { root: path.join(__dirname, '../views') });
 });
 
