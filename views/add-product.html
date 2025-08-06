@@ -7,133 +7,330 @@
     <title>Add Product</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-
-        .labelID {
-            position: absolute;
-            background-color: white;
-            top: 38.6%;
-            left: 45.5%;
-            font-size: 14px;
+        label {
             pointer-events: none;
-            transition: transform 0.3s ease;
         }
 
-        input:focus+.labelID {
-            transform: translateY(-25px) translateX(-12px);
+        body {
+            background-image: url("/add-product-background.jpg") !important;
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
         }
 
-        input:not(:placeholder-shown)+.labelID {
-            transform: translateY(-25px) translateX(-12px);
-            color: black;
+        input:focus+label {
+            transform: translateY(-25px) translateX(-8px);
         }
 
-        .labelName {
-            position: absolute;
-            background-color: white;
-            top: 45.6%;
-            left: 45.5%;
-            font-size: 14px;
-            pointer-events: none;
-            transition: transform 0.3s ease;
+        input:not(:placeholder-shown)+label {
+            transform: translateY(-25px) translateX(-8px);
         }
 
-        input:focus+.labelName {
-            transform: translateY(-25px) translateX(-12px);
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
 
-        input:not(:placeholder-shown)+.labelName {
-            transform: translateY(-25px) translateX(-12px);
-            color: black;
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
         }
-
-        .labelQTY {
-            position: absolute;
-            background-color: white;
-            top: 52.7%;
-            left: 45.5%;
-            font-size: 14px;
-            pointer-events: none;
-            transition: transform 0.3s ease;
-        }
-
-        input:focus+.labelQTY {
-            transform: translateY(-25px) translateX(-12px);
-        }
-
-        input:not(:placeholder-shown)+.labelQTY {
-            transform: translateY(-25px) translateX(-12px);
-            color: black;
-        }
-
-        .labelPrice {
-            position: absolute;
-            background-color: white;
-            top: 59.8%;
-            left: 45.5%;
-            font-size: 14px;
-            pointer-events: none;
-            transition: transform 0.3s ease;
-        }
-
-        input:focus+.labelPrice {
-            transform: translateY(-25px) translateX(-12px);
-        }
-
-        input:not(:placeholder-shown)+.labelPrice {
-            transform: translateY(-25px) translateX(-12px);
-            color: black;
-        }
-
-
-
     </style>
 </head>
 
-<body class="flex justify-center items-center h-screen bg-gray-700">
-    <form action="/" method="POST" class="flex flex-col bg-white p-5 rounded-xl shadow-lg" id="addProductForm">
+<body class="flex justify-center items-center w-screen h-screen">
+    <div class="flex flex-col justify-center items-center">
+        <form action="/shop" class="flex flex-col bg-white p-8 rounded-xl shadow-lg border-black border-2"
+            id="updateProductForm">
+            <label class="text-xl font-bold text-center m-2">Manage a product</label>
 
-        <label class="text-xl font-bold text-center m-2">Adding a product</label>
 
-        <input type="text" name="productID" id="productID" placeholder=" "
-            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
-        <label class="labelID p-1 font-bold rounded-full" for="productID">Product ID</label>
+            <div class="relative w-72 m-3">
+                <input type="text" name="productID" id="productID" placeholder=" " class="peer block w-full p-2 border-2 border-gray-300 rounded 
+           focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 
+           transition duration-300" />
+                <label for="productID" class="absolute left-3 top-2 text-gray-500 font-bold rounded-full 
+           bg-white px-1 text-base transition-all
+           peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400
+           peer-focus:text-black">
+                    Product ID
+                </label>
+            </div>
 
-        <input type="text" name="productName" id="productName" placeholder=" "
-            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
-        <label class="labelName p-1 font-bold rounded-full" for="productName">Name</label>
 
-        <input type="number" name="productQTY" id="productQTY" placeholder=" "
-            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
-        <label class="labelQTY p-1 font-bold rounded-full" for="productQTY">Quantity</label>
+            <div class="relative w-72 m-3">
+                <input type="text" name="productName" id="productName" placeholder=" " class="peer block w-full p-2 border-2 border-gray-300 rounded 
+           focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 
+           transition duration-300" />
+                <label for="productName" class="absolute left-3 top-2 text-gray-500 font-bold rounded-full 
+           bg-white px-1 text-base transition-all
+           peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400
+           peer-focus:text-black">
+                    Name
+                </label>
+            </div>
 
-        <input type="number" name="productPrice" id="productPrice" placeholder=" "
-            class="p-2 m-3 border-2 border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 rounded transition duration-300">
-        <label class="labelPrice p-1 font-bold rounded-full" for="productPrice">Price</label>
+            <div class="relative w-72 m-3">
+                <input type="number" name="productQTY" id="productQTY" placeholder=" " class="peer block w-full p-2 border-2 border-gray-300 rounded 
+           focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 
+           transition duration-300" />
+                <label for="productQTY" class="absolute left-3 top-2 text-gray-500 font-bold rounded-full 
+           bg-white px-1 text-base transition-all
+           peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400
+           peer-focus:text-black">
+                    Quantity
+                </label>
+            </div>
 
-        <button type="button" class="bg-blue-200 w-40 rounded text-center mx-auto hover:bg-blue-300 mt-2 font-semibold" id="submitButton">Add a Product</button>
-    </form>
+            <div class="relative w-72 m-3">
+                <input type="number" name="productPrice" id="productPrice" placeholder=" " class="peer block w-full p-2 border-2 border-gray-300 rounded 
+           focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200 
+           transition duration-300" />
+                <label for="productPrice" class="absolute left-3 top-2 text-gray-500 font-bold rounded-full 
+           bg-white px-1 text-base transition-all
+           peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400
+           peer-focus:text-black">
+                    Price
+                </label>
+            </div>
 
-    <a href="/" class="text-center absolute bottom-40 bg-white p-2 rounded-xl w-20 font-bold hover:bg-black hover:text-white transition duration-300">Home</button>
+            <button type="button" class="bg-blue-200 rounded text-center hover:bg-blue-300 mt-2 font-semibold"
+                id="addButton">Add a Product / Update a Product</button>
 
+            <button type="button" class="bg-red-200 rounded text-center hover:bg-red-300 mt-2 font-semibold"
+                id="removeButton">Remove a Product</button>
+
+            <button type="button" class="bg-red-200 rounded text-center hover:bg-red-300 mt-2 font-semibold"
+                id="removeAllButton">Remove All Products</button>
+        </form>
+
+        <a href="/shop"
+            class="text-center bottom-40 bg-white mt-3 p-2 rounded-xl w-20 font-bold hover:bg-blue-300 hover:text-white transition duration-300" id="backToShopButton">Shop</a>
+    </div>
     <script>
-            let confirmed = false;
+        let confirmedAdd = false;
+        let confirmedRemove = false;
+        let confirmedRemoveAll = false;
+        let lackOfProductID = false;
+        let lackOfProductName = false;
+        let lackOfProductQTY = false;
+        let lackOfProductPrice = false;
 
-            document.getElementById("submitButton").addEventListener("click",function (){
-                const button = this;
-                const form = document.getElementById("addProductForm");
+        document.getElementById("addButton").addEventListener("click", function () {
+            const button = this;
+            const form = document.getElementById("updateProductForm");
 
-                if(!confirmed){
-                    button.textContent = "Are you sure?";
-                    confirmed = true;
+            if (!confirmedAdd) {
+                button.textContent = "Are you sure?";
+                confirmedAdd = true;
 
-                    setTimeout(()=>{
-                        button.textContent = "Add a Product";
-                        confirmed = false;
-                    },3000);
-                } else{
-                    form.submit();
+                setTimeout(() => {
+                    button.textContent = "Add a Product / Update a Product";
+                    confirmedAdd = false;
+                }, 2000);
+            } else {
+                const product = {
+                    id: document.getElementById("productID").value.trim(),
+                    name: document.getElementById("productName").value.trim(),
+                    qty: document.getElementById("productQTY").value.trim(),
+                    price: document.getElementById("productPrice").value.trim(),
+                };
+
+                if (product.id.trim() === "") {
+                    document.getElementById("productID").classList.remove("border-gray-300");
+                    document.getElementById("productID").classList.add("border-red-300");
+                    document.getElementById("productID").classList.remove("animate-shake");
+                    void document.getElementById("productID").offsetWidth; //force reflow
+                    document.getElementById("productID").classList.add("animate-shake");
+                    confirmedAdd = false;
+                    lackOfProductID = true;
+                    button.textContent = "Add a Product / Update a Product";
                 }
-            });
+                else if (lackOfProductID) {
+                    document.getElementById("productID").classList.remove("border-red-300");
+                    document.getElementById("productID").classList.add("border-gray-300");
+                    lackOfProductID = false;
+                }
+
+                if (product.name.trim() === "") {
+                    document.getElementById("productName").classList.remove("border-gray-300");
+                    document.getElementById("productName").classList.add("border-red-300");
+                    document.getElementById("productName").classList.remove("animate-shake");
+                    void document.getElementById("productName").offsetWidth; //force reflow
+                    document.getElementById("productName").classList.add("animate-shake");
+                    confirmedAdd = false;
+                    lackOfProductName = true;
+                    button.textContent = "Add a Product / Update a Product";
+                }
+                else if (lackOfProductName) {
+                    document.getElementById("productName").classList.remove("border-red-300");
+                    document.getElementById("productName").classList.add("border-gray-300");
+                    lackOfProductName = false;
+                }
+
+                if (product.qty.trim() === "" || product.qty.trim() < 0) {
+                    document.getElementById("productQTY").classList.remove("border-gray-300");
+                    document.getElementById("productQTY").classList.add("border-red-300");
+                    document.getElementById("productQTY").classList.remove("animate-shake");
+                    void document.getElementById("productQTY").offsetWidth; //force reflow
+                    document.getElementById("productQTY").classList.add("animate-shake");
+                    confirmedAdd = false;
+                    lackOfProductQTY = true;
+                    button.textContent = "Add a Product / Update a Product";
+                }
+                else if (lackOfProductQTY) {
+                    document.getElementById("productQTY").classList.remove("border-red-300");
+                    document.getElementById("productQTY").classList.add("border-gray-300");
+                    lackOfProductQTY = false;
+                }
+
+                if (product.price.trim() === "" || product.price.trim() < 0) {
+                    document.getElementById("productPrice").classList.remove("border-gray-300");
+                    document.getElementById("productPrice").classList.add("border-red-300");
+                    document.getElementById("productPrice").classList.remove("animate-shake");
+                    void document.getElementById("productPrice").offsetWidth; //force reflow
+                    document.getElementById("productPrice").classList.add("animate-shake");
+                    confirmedAdd = false;
+                    lackOfProductPrice = true;
+                    button.textContent = "Add a Product / Update a Product";
+                }
+                else if (lackOfProductPrice) {
+                    document.getElementById("productPrice").classList.remove("border-red-300");
+                    document.getElementById("productPrice").classList.add("border-gray-300");
+                    lackOfProductPrice = false;
+                }
+
+                if (confirmedAdd) {
+                    const products = JSON.parse(localStorage.getItem("products") || "[]");
+                    const existProductIndex = products.findIndex(p => p.id === product.id);
+
+                    if (existProductIndex !== -1) {
+                        products[existProductIndex] = product;
+                    } else {
+                        products.push(product);
+                    }
+
+                    localStorage.setItem("products", JSON.stringify(products));
+
+                    document.getElementById("productID").value = "";
+                    document.getElementById("productName").value = "";
+                    document.getElementById("productQTY").value = "";
+                    document.getElementById("productPrice").value = "";
+
+                    button.textContent = "Succeeded ✅"
+                    confirmedAdd = false;
+                    setTimeout(() => {
+                        button.textContent = "Add a Product / Update a Product";
+                        confirmedAdd = false;
+                    }, 1500)
+                }
+            }
+        });
+
+        document.getElementById("removeButton").addEventListener("click", function () {
+            const button = this;
+
+            if (!confirmedRemove) {
+                this.textContent = "Are you sure?";
+                confirmedRemove = true;
+
+                setTimeout(() => {
+                    this.textContent = "Remove a Product";
+                    confirmedRemove = false;
+                }, 2000)
+            }
+            else {
+                const products = JSON.parse(localStorage.getItem("products") || "[]");
+                const existProductIndex = products.findIndex(p => p.id == document.getElementById("productID").value.trim());
+
+                if (existProductIndex !== -1) {
+                    products.splice(existProductIndex, 1); //ลบ element(product)ออกจาก array
+                    localStorage.setItem("products", JSON.stringify(products));
+
+                    button.textContent = "Succeeded ✅";
+
+                    setTimeout(() => {
+                        button.textContent = "Remove a Product";
+                        confirmedRemove = false;
+                    }, 2000)
+                }
+                else {
+                    button.textContent = "Product not found ❌";
+
+                    setTimeout(() => {
+                        button.textContent = "Remove a Product";
+                        confirmedRemove = false;
+                    }, 1500)
+                }
+            }
+        });
+
+        document.getElementById("removeAllButton").addEventListener("click", function () {
+            const button = this;
+
+            if (!confirmedRemoveAll) {
+                this.textContent = "Are you sure?";
+                confirmedRemoveAll = true;
+
+                setTimeout(() => {
+                    this.textContent = "Remove All Products"
+                    confirmedRemoveAll = false;
+                }, 2000)
+            }
+            else {
+                localStorage.removeItem("products");
+
+                document.getElementById("productID").value = "";
+                document.getElementById("productName").value = "";
+                document.getElementById("productQTY").value = "";
+                document.getElementById("productPrice").value = "";
+
+                button.textContent = "Succeeded ✅";
+
+                confirmedRemoveAll = false;
+
+                setTimeout(() => {
+                    button.textContent = "Remove All Products";
+                }, 1500);
+            }
+
+        });
+
+        document.getElementById("productID").addEventListener("input", function checkProductID() {
+            const products = JSON.parse(localStorage.getItem("products") || "[]");
+            const inputValue = this.value.trim();
+            const addUpdateButton = document.getElementById("addButton");
+
+            if (inputValue === "") {
+                addUpdateButton.textContent = "Add a Product / Update a Product"
+                return;
+            }
+
+            const existProductIndex = products.findIndex(p => p.id == this.value.trim());
+            if (existProductIndex !== -1) {
+                addUpdateButton.textContent = "Update a Product";
+            }
+            else if (existProductIndex === -1 && existProductIndex !== "") {
+                addUpdateButton.textContent = "Add a Product";
+            }
+        });
+
     </script>
 </body>
 
