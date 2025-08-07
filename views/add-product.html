@@ -51,11 +51,27 @@
         .animate-shake {
             animation: shake 0.3s ease-in-out;
         }
+
+        @keyframes loader {
+            from{
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        .loader-animation {
+            animation: loader 0.3s ease-out forwards;
+        }
     </style>
 </head>
 
 <body class="flex justify-center items-center w-screen h-screen">
-    <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center loader-animation">
         <form action="/shop" class="flex flex-col bg-white p-8 rounded-xl shadow-lg border-black border-2"
             id="updateProductForm">
             <label class="text-xl font-bold text-center m-2">Manage a product</label>
@@ -116,12 +132,15 @@
             <button type="button" class="bg-red-200 rounded text-center hover:bg-red-300 m-1 py-2 font-semibold"
                 id="removeButton">Remove a Product</button>
 
-            <button type="button" class="bg-red-200 rounded text-center hover:bg-red-300 mt-1 ms-1 me-1 py-2 font-semibold"
+            <button type="button"
+                class="bg-red-200 rounded text-center hover:bg-red-300 mt-1 ms-1 me-1 py-2 font-semibold"
                 id="removeAllButton">Remove All Products</button>
         </form>
 
-        <a href="https://krttphs.github.io/web-shop-addproduct-404-frontEndAndBackEnd/views/shop"
-            class="text-center bottom-40 bg-white mt-3 p-2 rounded-xl w-20 font-bold hover:bg-blue-300 hover:text-white transition duration-300" id="backToShopButton">Shop</a>
+        <a href="/shop"
+            class="text-center bottom-40 bg-white mt-3 p-2 rounded-xl w-20 font-bold hover:bg-blue-300 hover:text-white transition duration-300"
+            id="backToShopButton">Shop</a>
+
     </div>
     <script>
         let confirmedAdd = false;
