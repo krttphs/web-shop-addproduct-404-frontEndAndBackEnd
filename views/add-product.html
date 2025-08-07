@@ -72,7 +72,7 @@
 
 <body class="flex justify-center items-center w-screen h-screen">
     <div class="flex flex-col justify-center items-center loader-animation">
-        <form action="/shop" class="flex flex-col bg-white p-8 rounded-xl shadow-lg border-black border-2"
+        <form class="flex flex-col bg-white p-8 rounded-xl shadow-lg border-black border-2"
             id="updateProductForm">
             <label class="text-xl font-bold text-center m-2">Manage a product</label>
 
@@ -171,7 +171,7 @@
                     price: document.getElementById("productPrice").value.trim(),
                 };
 
-                if (product.id.trim() === "") {
+                if (product.id === "") {
                     document.getElementById("productID").classList.remove("border-gray-300");
                     document.getElementById("productID").classList.add("border-red-300");
                     document.getElementById("productID").classList.remove("animate-shake");
@@ -187,7 +187,7 @@
                     lackOfProductID = false;
                 }
 
-                if (product.name.trim() === "") {
+                if (product.name === "") {
                     document.getElementById("productName").classList.remove("border-gray-300");
                     document.getElementById("productName").classList.add("border-red-300");
                     document.getElementById("productName").classList.remove("animate-shake");
@@ -203,7 +203,7 @@
                     lackOfProductName = false;
                 }
 
-                if (product.qty.trim() === "" || product.qty.trim() < 0) {
+                if (product.qty === "" || product.qty < 0) {
                     document.getElementById("productQTY").classList.remove("border-gray-300");
                     document.getElementById("productQTY").classList.add("border-red-300");
                     document.getElementById("productQTY").classList.remove("animate-shake");
@@ -219,7 +219,7 @@
                     lackOfProductQTY = false;
                 }
 
-                if (product.price.trim() === "" || product.price.trim() < 0) {
+                if (product.price === "" || product.price < 0) {
                     document.getElementById("productPrice").classList.remove("border-gray-300");
                     document.getElementById("productPrice").classList.add("border-red-300");
                     document.getElementById("productPrice").classList.remove("animate-shake");
